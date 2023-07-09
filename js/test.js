@@ -9,7 +9,7 @@ async function retrieveSolution(id, time) {
         "body": "{\"query\":\" query codeWithRuntime($questionId: Int!, $lang: String!, $runtime: Int!, $skip: Int!) { codeWithRuntime( questionId: $questionId lang: $lang runtime: $runtime skip: $skip ) { code hasPrevious hasNext }} \",\"variables\":{\"questionId\":" + id + ",\"lang\":\"java\",\"skip\":0,\"runtime\":" + time + "},\"operationName\":\"codeWithRuntime\"}"
     })
         .then(res => res.json())
-        .then(data => data)
+        .then(data => console.log(data.data.codeWithRuntime))
     //{
     //if (data.data.codeWithRuntime != null) {
     //    console.log(data);
@@ -72,16 +72,4 @@ function retrieveId(title) {
         });
 }
 
-for (let i = 0; i < 1000; i = (i + 1) * 2) {
-    const temp = retrieveSolution(2, i).then(sol => {
-        if (sol.data.codeWithRuntime != null) {
-            console.log(sol);
-            //document.getElementById("goldMined").innerHTML = sol.data.codeWithRuntime.code;
-        }
-    });
-}
-
-retrieveSolution(1, 0).then(sol => {
-    console.log(sol);
-    //document.getElementById("test").innerHTML = sol.data.codeWithRuntime.code;
-})
+retrieveSolution(1, 0);
