@@ -72,4 +72,7 @@ function retrieveId(title) {
         });
 }
 
+randomQuestion();
 retrieveSolution(1, 0);
+retrieveContent("two-sum");
+console.log(correctTitle("two-sum"));

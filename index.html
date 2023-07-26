@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Clicker</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body onkeydown="mineGold()">
-<p id = "charTyped">0 Gold Mined</p>
-<button onclick="buyGoldPerCLick()" id="perClickUpgrade">Upgrade Pickaxe (Currently Level 1) Cost: 10 Gold</button>
-<button onclick="buyMiner()" id="coderUpgrade">Buy Miner (Currently 0) Cost: 10 Gold</button>
+<div class = "page">
+    <div class = "heading">
+        <div class = "headItem logoContainer dark">
+            <img src = "logo.png" class = "logo headItem" alt="logo">
+        </div>
+        <div class = "dark store">
+            Store
+        </div>
+        <div class = "dark">
+            <p class = "dark" id = "charTyped">0 Characters Typed</p>
+        </div>
+        <div class = "dark">
+            <p class = "dark" id = "solved">0 Problems Solved</p>
+        </div>
+        <button onclick="buyGoldPerCLick()" id="perClickUpgrade">Upgrade Pickaxe (Currently Level 1) Cost: 10 Gold</button>
+        <button onclick="buyMiner()" id="coderUpgrade">Buy Miner (Currently 0) Cost: 10 Gold</button>
+    </div>
 
-<p id = "test"></p>
 
-
-<script src="js/test.js"></script>
-<script src="js/main.js"></script>
-
+    <div class = "q-content">
+        <div class = "content-box dark">
+            <div class="title dark">
+                <span id="title">hello</span>
+            </div>
+            <div class = "content dark">
+                <p id="content" class="dark">hello</p>
+            </div>
+        </div>
+        <div class = "content-box dark">
+            <p id = "code" class="code dark"></p>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</div>
 </body>
 </html>
