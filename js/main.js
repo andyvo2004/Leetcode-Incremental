@@ -1,11 +1,12 @@
 var gameData = {
     charTyped: 0,
     problemSolved: 0,
-    charPerClick: 4,
+    charPerClick: 1,
     tempCharPerClick: 1,
     charPerClickCost: 10,
     coders: 0,
-    coderCost: 10,
+    coderCost: 1,
+    closed: 0,
     code: '',
     id: '1',
     title: 'two-sum',
@@ -75,7 +76,7 @@ var gameData = {
 
 document.getElementById("content").innerHTML = gameData.content;
 document.getElementById("title").innerHTML = gameData.id + ". " + correctTitle(gameData.title);
-function mineGold() {
+function type() {
     if (gameData.code.length === 0) {
         gameData.code = gameData.next;
         document.getElementById("code").innerHTML = "";
@@ -116,12 +117,12 @@ function mineGold() {
     }*/
 }
 
-function mineGoldLoop() {
+function workerLoop() {
     gameData.charTyped += gameData.coders;
     document.getElementById("charTyped").innerHTML = gameData.charTyped + " Characters Typed";
 }
 
-function buyGoldPerCLick() {
+function buyCharPerCLick() {
     if (gameData.charTyped >= gameData.charPerClickCost) {
         gameData.charTyped -= gameData.charPerClickCost;
         gameData.charPerClick += 1;
@@ -129,18 +130,16 @@ function buyGoldPerCLick() {
     }
     document.getElementById("charTyped").innerHTML = gameData.charTyped + " Characters Typed";
     document.getElementById("perClickUpgrade").innerHTML =
-        "Upgrade Pickaxe (Currently Level " + gameData.charPerClick + ") Cost: " + gameData.charPerClickCost + " Gold";
+        "Purchase Keyboard (Currently " + gameData.charPerClick + ") Cost: " + gameData.charPerClickCost + " Characters";
 }
 
-function buyMiner() {
-    if (gameData.charTyped >= gameData.coderCost) {
-        gameData.charTyped -= gameData.coderCost;
+function buyWorker() {
+    if (gameData.problemSolved >= gameData.coderCost) {
         gameData.coders += 1;
-        gameData.coderCost *= 4;
+        gameData.coderCost *= 2;
     }
-    document.getElementById("charMined").innerHTML = gameData.charTyped + " Characters Typed";
     document.getElementById("coderUpgrade").innerHTML =
-        "Buy Miner (Currently " + gameData.coders + ") Cost: " + gameData.coderCost + " Gold";
+        "Buy Programmer (Currently " + gameData.coders + ") Requirement: " + gameData.coderCost + " Problems Solved";
 }
 
 function correctTitle(title) {
@@ -154,6 +153,28 @@ function correctTitle(title) {
 }
 
 var mainGameLoop = window.setInterval(function() {
-    mineGoldLoop()
+    workerLoop()
 }, 1000);
 
+function openStore() {
+    document.getElementById("store").style.width = "250px";
+    document.getElementById("page").onclick = function onclick() {
+        closeStore()
+    };
+    document.body.onkeydown = function onkeydown() {
+    };
+}
+
+function closeStore() {
+    if (gameData.closed === 0) {
+        gameData.closed++;
+    } else {
+        document.getElementById("store").style.width = "0";
+        document.getElementById("page").onclick = function onclick() {
+        };
+        document.body.onkeydown = function onkeydown() {
+            type()
+        };
+        gameData.closed = 0;
+    }
+}

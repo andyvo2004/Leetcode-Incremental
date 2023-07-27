@@ -5,25 +5,38 @@
     <title>Clicker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onkeydown="mineGold()">
-<div class = "page">
-    <div class = "heading">
-        <div class = "headItem logoContainer dark">
-            <img src = "logo.png" class = "logo headItem" alt="logo">
-        </div>
-        <div class = "dark store">
-            Store
-        </div>
-        <div class = "dark">
-            <p class = "dark" id = "charTyped">0 Characters Typed</p>
-        </div>
-        <div class = "dark">
-            <p class = "dark" id = "solved">0 Problems Solved</p>
-        </div>
-        <button onclick="buyGoldPerCLick()" id="perClickUpgrade">Upgrade Pickaxe (Currently Level 1) Cost: 10 Gold</button>
-        <button onclick="buyMiner()" id="coderUpgrade">Buy Miner (Currently 0) Cost: 10 Gold</button>
+<body onkeydown="type()">
+<div id="store" class="">
+    <a href="javascript:void(0)" class=" close" onclick="closeStore()">&times;</a>
+    <div class = " storeTitle">
+        <span>Store</span>
     </div>
-
+    <button onclick="buyCharPerCLick()" id="perClickUpgrade">
+        Purchase Keyboard (Currently 1)
+        Cost: 10 Gold
+    </button>
+    <button onclick="buyWorker()" id="coderUpgrade">
+        Buy Programmer (Currently 0)
+        Requirement: 1 Problem Solved
+    </button>
+</div>
+<div id = "page">
+    <div class = "heading">
+        <div class = "left-heading dark">
+            <div class = "headItem logoContainer dark">
+                <img src = "logo.png" class = "logo headItem" alt="logo">
+            </div>
+            <div class = "dark">
+                <p class = "dark" id = "charTyped">0 Characters Typed</p>
+            </div>
+            <div class = "dark">
+                <p class = "dark" id = "solved">0 Problems Solved</p>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class = "dark store" onclick="openStore()">
+            Store
+        </a>
+    </div>
 
     <div class = "q-content">
         <div class = "content-box dark">

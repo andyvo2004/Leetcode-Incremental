@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="main" type="javaScript">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/js/main.js" />
+      <root url="file://$PROJECT_DIR$/js/test.js" />
+    </SOURCES>
+  </library>
+</component>
